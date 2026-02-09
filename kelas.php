@@ -218,8 +218,8 @@
                                             <th><?php echo $d['id_kelas']; ?></th>
                                             <th><?php echo $d['nama_kelas']; ?></th>
                                             <th>
-                                            <a href="#" class="btn btn-success">Edit</a>
-                                            <a href="#" class="btn btn-danger">Hapus</a>
+                                            <a href="/akademik/edit_kelas.php?id=<?php echo $d['id_kelas']; ?>" class="btn btn-success">Edit</a>
+                                            <a href="/akademik/hapus_kelas.php?id=<?php echo $d['id_kelas']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus <?php echo addslashes($d['nama_kelas']); ?>?')">Hapus</a>
                                             </th>
                                         </tr>
                                         <?php

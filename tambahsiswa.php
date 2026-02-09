@@ -194,6 +194,7 @@
 
                 <h1 class="h3 mb-2 text-gray-800">Form Tambah Data Siswa</h1>
 
+<?php include __DIR__ . '/koneksi.php'; ?>
 <form method="POST" action="tsiswa.php">
   <!-- <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">ID Kelas</label>
@@ -202,7 +203,7 @@
     </div>
   </div> -->
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Nama Kelas</label>
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Nis</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="nis" name="nis">
     </div>
@@ -229,22 +230,28 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Kelas</label>
     <div class="col-sm-10">
-        <select class="form-control form-control-lg" id="kelas" name="kelas">
-        <option>--Pilih Kelas--</option>
-            <option value="X">X</option>
-            <option value="XI">XI</option>
-            <option value="XII">XII</option>
+        <select class="form-control form-control-lg" id="kelas" name="kelas" required>
+        <option value="">--Pilih Kelas--</option>
+        <?php
+        $qk = mysqli_query($koneksi, "SELECT id_kelas, nama_kelas FROM kelas ORDER BY nama_kelas");
+        while ($rk = mysqli_fetch_array($qk)) {
+            echo '<option value="' . $rk['id_kelas'] . '">' . htmlspecialchars($rk['nama_kelas']) . '</option>';
+        }
+        ?>
         </select>
 </div>
   </div>
 <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Jurusan</label>
     <div class="col-sm-10">
-        <select class="form-control form-control-lg" id="jurusan" name="jurusan">
-        <option>--Pilih Jurusan--</option>
-            <option value="X">Pengembangan Perangkat Lunak Dan Gim</option>
-            <option value="XI">Pengelasan</option>
-            <option value="XII">Otomotif</option>
+        <select class="form-control form-control-lg" id="jurusan" name="jurusan" required>
+        <option value="">--Pilih Jurusan--</option>
+        <?php
+        $qj = mysqli_query($koneksi, "SELECT id_jurusan, nama_jurusan FROM jurusan ORDER BY nama_jurusan");
+        while ($rj = mysqli_fetch_array($qj)) {
+            echo '<option value="' . $rj['id_jurusan'] . '">' . htmlspecialchars($rj['nama_jurusan']) . '</option>';
+        }
+        ?>
         </select>
 </div>
   </div>

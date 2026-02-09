@@ -215,24 +215,28 @@
                                             <th>Keterangan</th>
                                             <th>Opsi</th>
                                         </tr>
-                                        <?php
-                                        include 'koneksi.php';
-                                        $no = 1;
-                                        $data = mysqli_query($koneksi,"select * from siswa");
-                                        while($d = mysqli_fetch_array($data)){
-                                        ?> 
+                    <?php
+                    include 'koneksi.php';
+                    $no = 1;
+                    $sql = "SELECT s.*, k.nama_kelas AS nama_kelas, j.nama_jurusan AS nama_jurusan
+                        FROM siswa s
+                        LEFT JOIN kelas k ON s.kelas = k.id_kelas
+                        LEFT JOIN jurusan j ON s.jurusan = j.id_jurusan";
+                    $data = mysqli_query($koneksi, $sql);
+                    while($d = mysqli_fetch_array($data)){
+                    ?> 
                                         <tr>
                                             <th><?php echo $no++; ?></th>
                                             <th><?php echo $d['nis'] ?></th>
                                             <th><?php echo $d['nama'] ?></th>
                                             <th><?php echo $d['jk'] ?></th>
                                             <th><?php echo $d['tgl_lahir'] ?></th>
-                                            <th><?php echo $d['kelas'] ?></th>
-                                            <th><?php echo $d['jurusan'] ?></th>
+                                            <th><?php echo htmlspecialchars($d['nama_kelas'] ?? '-'); ?></th>
+                                            <th><?php echo htmlspecialchars($d['nama_jurusan'] ?? '-'); ?></th>
                                             <th><?php echo $d['keterangan'] ?></th>
                                             <th>
-                                                <a href="#" class="btn btn-success">Edit</a>
-                                                <a href="#" class="btn btn-danger">Hapus</a>
+                                                <a href="/akademik/edit_siswa.php?nis=<?php echo urlencode($d['nis']); ?>" class="btn btn-success">Edit</a>
+                                                <a href="/akademik/hapus_siswa.php?nis=<?php echo urlencode($d['nis']); ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus <?php echo addslashes($d['nama']); ?>?')">Hapus</a>
                                             </th>
                                         </tr>
                                         <?php

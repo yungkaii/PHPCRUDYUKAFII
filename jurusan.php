@@ -222,8 +222,8 @@
                                             <th><?php echo $d['id_jurusan']; ?></th>
                                             <th><?php echo $d ['nama_jurusan']; ?></th>
                                             <th>
-                                            <a href="#" class="btn btn-success">Edit</a>
-                                            <a href="#" class="btn btn-danger">Hapus</a>
+                                            <a href="/akademik/edit_jurusan.php?id=<?php echo $d['id_jurusan']; ?>" class="btn btn-success">Edit</a>
+                                            <a href="/akademik/hapus_jurusan.php?id=<?php echo $d['id_jurusan']; ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus <?php echo addslashes($d['nama_jurusan']); ?>?')">Hapus</a>
                                             </th>
                                         </tr>
                                         <?php

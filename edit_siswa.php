@@ -1,6 +1,6 @@
 <?php
 // Koneksi database
-include 'koneksi.php';
+include __DIR__ . '/koneksi.php';
 
 // Ambil NIS dari URL (safely)
 $nis = isset($_GET['nis']) ? trim($_GET['nis']) : '';
@@ -139,6 +139,13 @@ $d = mysqli_fetch_array($data);
                     <form method="POST" action="update_siswa.php">
                     
                     <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
+
+                    <div class="row mb-3">
+                        <label for="inputNIS" class="col-sm-2 col-form-label">NIS</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputNIS" name="nis" value="<?php echo $d['nis']; ?>" required>
+                        </div>
+                    </div>
                     
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-2 col-form-label">Nama Siswa</label>
@@ -171,7 +178,7 @@ $d = mysqli_fetch_array($data);
                             $kelas = mysqli_query($koneksi, "SELECT * FROM kelas");
                             while($k = mysqli_fetch_array($kelas)){
                             ?>
-                            <option value="<?php echo $k['kelas']; ?>" <?php if($d['kelas'] == $k['id_kelas']) echo 'selected'; ?>><?php echo $k['nama_kelas']; ?></option>
+                            <option value="<?php echo $k['id_kelas']; ?>" <?php if($d['kelas'] == $k['id_kelas']) echo 'selected'; ?>><?php echo $k['nama_kelas']; ?></option>
                             <?php
                             }
                             ?>
@@ -187,7 +194,7 @@ $d = mysqli_fetch_array($data);
                             $jurusan = mysqli_query($koneksi, "SELECT * FROM jurusan");
                             while($j = mysqli_fetch_array($jurusan)){
                             ?>
-                            <option value="<?php echo $j['id_jurusan']; ?>" <?php if($d['jurusan'] == $j['jurusan']) echo 'selected'; ?>><?php echo $j['nama_jurusan']; ?></option>
+                            <option value="<?php echo $j['id_jurusan']; ?>" <?php if($d['jurusan'] == $j['id_jurusan']) echo 'selected'; ?>><?php echo $j['nama_jurusan']; ?></option>
                             <?php
                             }
                             ?>

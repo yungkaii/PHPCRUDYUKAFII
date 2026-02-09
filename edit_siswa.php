@@ -26,7 +26,7 @@ $d = mysqli_fetch_array($data);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Maniaman | WebDev School</title>
+    <title>Yuka | WebDev School</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -221,7 +221,7 @@ $d = mysqli_fetch_array($data);
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Maniaman | WebDev School</span>
+                        <span>Copyright &copy; Yuka | WebDev School</span>
                     </div>
                 </div>
             </footer>
